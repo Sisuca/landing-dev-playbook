@@ -1,0 +1,149 @@
+/* style.css - Estilos personalizados para DevLaunch Kit */
+
+/* Estilos base personalizados */
+:root {
+    --color-primary: #3b82f6;
+    --color-secondary: #8b5cf6;
+    --color-success: #10b981;
+    --color-warning: #f59e0b;
+    --color-danger: #ef4444;
+}
+
+/* Smooth scroll behavior */
+html {
+    scroll-behavior: smooth;
+}
+
+/* Personalización de la barra de desplazamiento */
+::-webkit-scrollbar {
+    width: 10px;
+}
+
+::-webkit-scrollbar-track {
+    background: #f1f1f1;
+    border-radius: 5px;
+}
+
+::-webkit-scrollbar-thumb {
+    background: linear-gradient(to bottom, var(--color-primary), var(--color-secondary));
+    border-radius: 5px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: linear-gradient(to bottom, #2563eb, #7c3aed);
+}
+
+/* Animaciones personalizadas */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.fade-in-up {
+    animation: fadeInUp 0.6s ease-out forwards;
+}
+
+/* Estilos para las tareas del checklist */
+.task-item {
+    transition: all 0.3s ease;
+}
+
+.task-item:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+}
+
+/* Estilos para las fases */
+.phase-group {
+    animation: fadeInUp 0.5s ease-out forwards;
+}
+
+.phase-group:nth-child(1) { animation-delay: 0.1s; }
+.phase-group:nth-child(2) { animation-delay: 0.2s; }
+.phase-group:nth-child(3) { animation-delay: 0.3s; }
+.phase-group:nth-child(4) { animation-delay: 0.4s; }
+
+/* Efecto de gradiente animado para botones */
+.gradient-btn {
+    background-size: 200% auto;
+    background-image: linear-gradient(to right, var(--color-primary) 0%, var(--color-secondary) 51%, var(--color-primary) 100%);
+    transition: all 0.3s ease;
+}
+
+.gradient-btn:hover {
+    background-position: right center;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(59, 130, 246, 0.4);
+}
+
+/* Estilos para los checkboxes personalizados */
+.task-checkbox {
+    -webkit-appearance: none;
+    appearance: none;
+    border: 2px solid #d1d5db;
+    border-radius: 0.375rem;
+    outline: none;
+    cursor: pointer;
+    position: relative;
+}
+
+.task-checkbox:checked {
+    background-color: var(--color-primary);
+    border-color: var(--color-primary);
+}
+
+.task-checkbox:checked::after {
+    content: '✓';
+    position: absolute;
+    color: white;
+    font-size: 14px;
+    font-weight: bold;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+/* Efecto de pulso para elementos importantes */
+@keyframes pulse {
+    0% {
+        box-shadow: 0 0 0 0 rgba(59, 130, 246, 0.7);
+    }
+    70% {
+        box-shadow: 0 0 0 10px rgba(59, 130, 246, 0);
+    }
+    100% {
+        box-shadow: 0 0 0 0 rgba(59, 130, 246, 0);
+    }
+}
+
+.pulse {
+    animation: pulse 2s infinite;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .phase-group {
+        margin-bottom: 2rem;
+    }
+    
+    .task-item {
+        padding: 1rem;
+    }
+}
+
+/* Estilos para el modo oscuro (opcional, puedes activarlo más tarde) */
+@media (prefers-color-scheme: dark) {
+    .dark\:bg-gray-900 {
+        background-color: #111827;
+    }
+    
+    .dark\:text-white {
+        color: #ffffff;
+    }
+}
