@@ -20,11 +20,11 @@ Una landing page interactiva que sirve como guía paso a paso para desarrollar p
 - 📝 **Guía de mejores prácticas** para desarrollo web
 
 ## 🖼️ Vista Previa
+[Captura de pantalla](assets/images/screenshot.png)
 
-*Captura de pantalla disponible después del desarrollo*
+**🔗 Demo en vivo:**
+[https://sisuca.github.io/landing-dev-playbook](https://sisuca.github.io/landing-dev-playbook)
 
-**🔗 Demo en vivo:** [https://sisuca.github.io/landing-dev-playbook](https://sisuca.github.io/landing-dev-playbook)  
-*(Activar GitHub Pages después de subir el proyecto)*
 
 ## 🚀 Cómo Usar
 
@@ -32,7 +32,7 @@ Una landing page interactiva que sirve como guía paso a paso para desarrollar p
 
 ```bash
 # 1. Clonar el repositorio
-git clone https://github.com/sisuca/landing-dev-playbook.git
+git clone https://github.com/Sisuca/landing-dev-playbook.git
 
 # 2. Navegar al directorio del proyecto
 cd landing-dev-playbook
@@ -113,8 +113,8 @@ Este proyecto está bajo la Licencia MIT. Ver el archivo `LICENSE` para más det
 
 **Isabel Abad**
 - 📧 Email: isabel.abad.ca@gmail.com
-- 💼 LinkedIn: [isabel-abad](https://www.linkedin.com/in/abadisabel)
-- 🐙 GitHub: [@isabelabad](https://github.com/sisuca)
+- 💼 LinkedIn: [linkedin.com/in/isabel-abad](https://linkedin.com/in/isabel-abad)
+- 🐙 GitHub: [@Sisuca](https://github.com/Sisuca)
 - 🔗 **Portafolio:** *Próximamente*
 
 ---
