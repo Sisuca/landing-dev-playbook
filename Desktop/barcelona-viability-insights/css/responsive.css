@@ -1,61 +1,117 @@
-/* ===== RESPONSIVE.CSS - VERSIÓN V15.8 ===== */
-/* Solo media queries generales - NO toca el dashboard */
+/* ===== RESPONSIVE.CSS - VERSIÓN COMPATIBLE CON STICKY ===== */
 
-/* Tablets (768px - 1024px) */
-@media (max-width: 1024px) {
-    .container {
-        padding: 0 1.5rem;
+/* 0. CORRECCIÓN GLOBAL PARA NO ROMPER STICKY */
+/* IMPORTANTE: No usar overflow-x: hidden en elementos que contengan sticky */
+
+/* 1. HEADER MOBILE */
+@media (max-width: 768px) {
+    .main-nav {
+        position: fixed;
+        top: 70px;
+        left: 0;
+        width: 100%;
+        background: white;
+        box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+        padding: 1rem;
+        transform: translateY(-100%);
+        opacity: 0;
+        visibility: hidden;
+        transition: all 0.3s ease;
+        z-index: 999;
     }
     
-    .hero-title {
-        font-size: 2.5rem;
+    .main-nav.active {
+        transform: translateY(0);
+        opacity: 1;
+        visibility: visible;
     }
     
-    .hero-subtitle {
-        font-size: 1.25rem;
+    .main-nav .nav-list {
+        flex-direction: column;
+        gap: 0;
     }
     
-    .hero-stats {
-        gap: 1rem;
+    .nav-link {
+        display: block;
+        padding: 1rem;
+        border-bottom: 1px solid var(--gray-200);
     }
     
-    .stat-card {
-        min-width: 160px;
-    }
-    
-    .insights-grid {
-        grid-template-columns: repeat(2, 1fr);
-    }
-    
-    .footer-content {
-        grid-template-columns: 1fr 1fr;
-        gap: 2rem;
+    .mobile-menu-toggle {
+        display: block;
     }
 }
 
-/* Móviles grandes (576px - 768px) */
+/* 2. HERO MOBILE */
 @media (max-width: 768px) {
-    .container {
-        padding: 0 1rem;
+    .hero {
+        padding-top: 6rem;
+        padding-bottom: 2rem;
     }
     
-    section {
-        padding: 3rem 0;
+    .hero-title {
+        font-size: 2rem;
+        line-height: 1.2;
     }
     
-    h1 { 
-        font-size: 2rem; 
+    .hero-subtitle {
+        font-size: 1.125rem;
     }
     
-    h2 { 
-        font-size: 1.75rem; 
+    .hero-stats {
+        flex-direction: column;
+        align-items: center;
     }
     
-    h3 { 
-        font-size: 1.25rem; 
+    .stat-card {
+        width: 100%;
+        max-width: 300px;
     }
     
-    /* Report banner */
+    .hero-cta {
+        flex-direction: column;
+        align-items: center;
+    }
+    
+    .cta-button {
+        width: 100%;
+        max-width: 300px;
+        justify-content: center;
+    }
+}
+
+/* 3. DASHBOARD MOBILE - STICKY FUNCIONANDO */
+@media (max-width: 768px) {
+    /* El sidebar sticky ya está configurado en dashboard.css */
+    /* Solo asegurar que no haya overflow que lo rompa */
+    .dashboard-section,
+    .dashboard-layout,
+    .dashboard-main {
+        overflow-x: visible !important;
+    }
+    
+    /* Filtros en columna única */
+    .filters-container {
+        grid-template-columns: 1fr;
+        gap: 1rem;
+        padding: 1rem;
+    }
+    
+    /* KPIs en columna única */
+    .kpi-cards-container {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* 4. INSIGHTS MOBILE */
+@media (max-width: 768px) {
+    .insights-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* 5. REPORT BANNER MOBILE */
+@media (max-width: 768px) {
     .report-banner-content {
         flex-direction: column;
         text-align: center;
@@ -70,36 +126,76 @@
         width: 100%;
         justify-content: center;
     }
+}
+
+/* 6. METHODOLOGY MOBILE */
+@media (max-width: 768px) {
+    .accordion-item {
+        width: 100%;
+        box-sizing: border-box;
+    }
     
-    /* About card */
-    .about-card {
-        padding: 1.5rem;
+    .accordion-header {
+        padding: 1.25rem 1rem;
+    }
+    
+    .phase-content {
+        padding: 1rem;
+    }
+}
+
+/* 7. ABOUT MOBILE */
+@media (max-width: 768px) {
+    .about-card-header {
+        flex-direction: column;
+        text-align: center;
+        gap: 1rem;
+    }
+    
+    .profile-info {
+        text-align: center;
+    }
+    
+    .profile-tags {
+        justify-content: center;
+    }
+    
+    .capabilities-grid {
+        grid-template-columns: 1fr;
+        gap: 1rem;
     }
     
     .profile-links {
-        flex-direction: column;
-        align-items: center;
+        flex-wrap: wrap;
+        justify-content: center;
     }
     
     .profile-link {
         width: 100%;
-        max-width: 300px;
+        max-width: 250px;
         justify-content: center;
-    }
-    
-    /* Footer */
-    .footer-links {
-        flex-direction: column;
-        align-items: center;
-        gap: 1.5rem;
-    }
-    
-    .link-group {
-        text-align: center;
     }
 }
 
-/* Móviles pequeños (hasta 576px) */
+/* 8. FOOTER MOBILE */
+@media (max-width: 768px) {
+    .footer-content {
+        grid-template-columns: 1fr;
+        text-align: center;
+        gap: 2rem;
+    }
+    
+    .footer-links {
+        flex-direction: column;
+        gap: 2rem;
+    }
+    
+    .footer-logo {
+        justify-content: center;
+    }
+}
+
+/* 9. AJUSTES PARA MÓVILES MUY PEQUEÑOS */
 @media (max-width: 480px) {
     .hero-title {
         font-size: 1.75rem;
@@ -110,7 +206,7 @@
     }
     
     .hero-description {
-        font-size: 1rem;
+        font-size: 0.95rem;
     }
     
     .cta-button {
@@ -118,186 +214,112 @@
         font-size: 0.95rem;
     }
     
-    .about-card {
-        padding: 1.25rem;
-    }
-    
-    .legal-note {
-        font-size: 0.75rem;
-        flex-direction: column;
-        text-align: center;
-        gap: 0.25rem;
-    }
-    
-    .legal-note i {
+    .btn-download-pdf {
+        padding: 0.875rem;
         font-size: 1rem;
     }
 }
 
-/* Tablet horizontal (1024px - 1200px) */
-@media (min-width: 1024px) and (max-width: 1200px) {
-    .kpi-cards-container {
-        grid-template-columns: repeat(3, 1fr);
-    }
-}
-
-/* Pantallas grandes (más de 1440px) */
-@media (min-width: 1440px) {
-    .container {
-        max-width: 1400px;
-    }
-    
-    .hero-content {
-        max-width: 900px;
-    }
-    
-    .insights-grid {
-        grid-template-columns: repeat(3, 1fr);
-        gap: 2.5rem;
-    }
-}
-
-/* Altura reducida (móviles horizontal) */
-@media (max-height: 600px) and (orientation: landscape) {
-    .hero {
-        padding: 3rem 0 2rem;
-    }
-    
-    .hero-title {
-        font-size: 2rem;
-        margin-bottom: 0.75rem;
-    }
-    
-    .hero-stats {
-        margin: 1.5rem 0;
-    }
-}
-
-/* Impresión */
-@media print {
-    .main-header,
-    .mobile-menu-toggle,
-    .hero-cta,
-    .report-banner,
-    .profile-links,
-    .footer-legal,
-    .dashboard-filters,
-    .reset-filters-btn {
-        display: none !important;
-    }
-    
-    body {
-        padding-top: 0;
-        font-size: 12pt;
-    }
-    
-    .container {
-        max-width: 100%;
-        padding: 0;
-    }
-    
-    .insight-card {
-        break-inside: avoid;
-        page-break-inside: avoid;
-    }
-    
-    a {
-        color: #000;
-        text-decoration: none;
-    }
-}
-
-/* Modo alto contraste */
-@media (prefers-contrast: high) {
-    :root {
-        --primary-800: #0a192f;
-        --primary-900: #051225;
-        --accent-orange: #e67e00;
-    }
-    
-    .nav-link.active {
-        border-bottom: 3px solid var(--accent-orange);
-    }
-    
-    .cta-button {
-        border: 2px solid currentColor;
-    }
-}
-
-/* Movimiento reducido */
-@media (prefers-reduced-motion: reduce) {
-    *,
-    *::before,
-    *::after {
-        animation-duration: 0.01ms;
-        animation-iteration-count: 1;
-        transition-duration: 0.01ms;
-        scroll-behavior: auto;
-    }
-    
-    .accordion-content {
-        transition: none;
-    }
-    
-    .kpi-card:hover,
-    .insight-card:hover {
-        transform: none;
-    }
-}
-
-/* Orientación vertical */
-@media (orientation: portrait) and (max-width: 768px) {
-    .hero-stats {
-        flex-direction: row;
+/* 10. CORRECCIÓN ESPECÍFICA PARA TABLAS ANCHAS (sin romper sticky) */
+@media (max-width: 1024px) {
+    /* Contenedor para cualquier tabla que pueda desbordar */
+    .table-scroll-wrapper {
+        width: 100%;
         overflow-x: auto;
-        justify-content: flex-start;
-        padding-bottom: 1rem;
         -webkit-overflow-scrolling: touch;
+        margin: 1rem 0;
+        border-radius: 0.5rem;
+        border: 1px solid var(--gray-200);
     }
     
-    .stat-card {
-        flex: 0 0 auto;
-        width: 180px;
+    /* Aplicar a tus tablas existentes (YA ESTÁ EN table-chart.css) */
+    .data-table,
+    .accessibility-table,
+    .insights-table {
+        min-width: 700px;
     }
 }
 
-/* Orientación horizontal */
-@media (orientation: landscape) and (max-height: 500px) {
-    .main-header {
-        height: 60px;
+/* 11. CORRECCIÓN EXTRA PARA ELEMENTOS ANCHOS EN MÓVIL */
+@media (max-width: 768px) {
+    /* Asegurar que las imágenes no desborden */
+    img, svg, canvas {
+        max-width: 100%;
+        height: auto;
     }
     
-    .header-container {
-        height: 60px;
-        padding: 0.5rem 1rem;
-    }
-    
-    body {
-        padding-top: 60px;
-    }
-    
-    .main-nav.active {
-        top: 60px;
+    /* Prevenir desbordamiento en contenedores específicos */
+    .powerbi-container,
+    .chart-container,
+    .table-container {
+        max-width: 100%;
+        overflow-x: auto; /* Scroll horizontal solo donde sea necesario */
     }
 }
 
-/* Pantallas muy pequeñas */
-@media (max-width: 360px) {
-    .logo h1 {
-        font-size: 1.1rem;
+/* 12. REGLA ESPECÍFICA PARA ASEGURAR STICKY EN MÓVIL */
+@media (max-width: 768px) {
+    .dashboard-sidebar {
+        position: sticky !important;
+        top: 72px !important;
+        z-index: 90 !important;
+        background-color: var(--white) !important;
+    }
+}
+
+/* ===== AJUSTES ESPECÍFICOS PARA METODOLOGÍA Y ABOUT EN MÓVIL ===== */
+@media (max-width: 768px) {
+    /* METODOLOGÍA EN MÓVIL */
+    .methodology .container,
+    .about .container {
+        padding-left: 1rem !important;
+        padding-right: 1rem !important;
     }
     
-    .hero-title {
-        font-size: 1.5rem;
+    .accordion {
+        max-width: 100% !important; /* Forzar ancho completo en móvil */
+        width: 100%;
     }
     
-    .stat-number {
-        font-size: 1.75rem;
+    .methodology-footer {
+        max-width: 100% !important; /* Forzar ancho completo en móvil */
+        width: 100%;
     }
     
-    .profile-tag,
-    .tech-tag {
-        font-size: 0.75rem;
-        padding: 0.375rem 0.75rem;
+    /* ABOUT EN MÓVIL */
+    .about-card {
+        max-width: 100% !important; /* Forzar ancho completo en móvil */
+        width: 100%;
+        padding: 1.5rem; /* Un poco menos de padding en móvil */
+    }
+    
+    .about-card-header {
+        flex-direction: column;
+        text-align: center;
+        gap: 1rem;
+    }
+    
+    .profile-info {
+        text-align: center;
+    }
+    
+    .profile-tags {
+        justify-content: center;
+    }
+    
+    .capabilities-grid {
+        grid-template-columns: 1fr;
+        gap: 1rem;
+    }
+    
+    .profile-links {
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+    
+    .profile-link {
+        width: 100%;
+        max-width: 250px;
+        justify-content: center;
     }
 }

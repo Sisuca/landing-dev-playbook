@@ -1,5 +1,4 @@
-/* css/table-chart.css - VERSIÓN V15.9 - CON EJES PARA SENIORITY */
-
+/* css/table-chart.css - VERSIÓN FINAL OPTIMIZADA PARA MÓVIL */
 /* ===== TABLA DE DETALLE CON ALINEACIÓN CORREGIDA ===== */
 .table-container {
     background: var(--white);
@@ -8,6 +7,9 @@
     box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
     margin: 16px 0;
     border: 1px solid #E5E7EB;
+    max-width: 100%;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
 }
 
 .data-table {
@@ -15,6 +17,8 @@
     border-collapse: collapse;
     font-family: 'Inter', sans-serif;
     font-size: 0.88rem;
+    min-width: 600px;
+    max-width: 100%;
 }
 
 .data-table th {
@@ -100,7 +104,6 @@
 .viability-icon {
     font-family: 'Inter', sans-serif;
     font-weight: 500;
-    display: flex;
     align-items: center;
     gap: 6px;
     white-space: nowrap;
@@ -118,6 +121,7 @@
     font-weight: 400;
     margin: 0;
     border-radius: 0 0 10px 10px;
+    max-width: 100%;
 }
 
 .footer-info {
@@ -130,6 +134,7 @@
     color: var(--text-color);
     font-family: 'Inter', sans-serif;
     flex-wrap: wrap;
+    max-width: 100%;
 }
 
 .footer-info strong {
@@ -155,11 +160,14 @@
     border: 1px solid #E5E7EB;
     display: flex;
     flex-direction: column;
+    max-width: 100%;
+    overflow: visible;
 }
 
 /* Contenedor de barras */
 .bars-container {
     margin-bottom: 20px;
+    max-width: 100%;
 }
 
 /* ESTRUCTURA GRID 2-3-1 (2fr label, 3fr barra, 1fr viabilidad) */
@@ -170,11 +178,14 @@
     align-items: center;
     margin-bottom: 12px;
     min-height: 40px;
+    max-width: 100%;
 }
 
 /* MEJORA CRÍTICA: Bar-label más flexible para nombres largos */
 .bar-label {
     font-family: 'Inter', sans-serif;
+    min-width: 0;
+    overflow-wrap: break-word;
 }
 
 /* Asegurar que el nombre del barrio no se corte - PERMITE MÚLTIPLES LÍNEAS */
@@ -184,9 +195,10 @@
     font-weight: 600;
     color: var(--text-color);
     line-height: 1.3;
-    word-wrap: break-word; /* Permite cortar palabras largas */
-    overflow-wrap: break-word; /* Alternativa moderna */
-    white-space: normal; /* Permite múltiples líneas */
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+    white-space: normal;
+    max-width: 100%;
 }
 
 .bar-label small {
@@ -195,7 +207,10 @@
     color: var(--neutral-gray);
     margin-top: 2px;
     line-height: 1.2;
-    white-space: nowrap; /* Distrito y cantidad en una línea */
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-width: 100%;
 }
 
 /* Bar-wrapper - Ocupa 3 columnas, centrado */
@@ -207,6 +222,8 @@
     overflow: hidden;
     display: flex;
     align-items: center;
+    min-width: 50px;
+    max-width: 100%;
 }
 
 .bar {
@@ -218,7 +235,7 @@
     background-color: var(--secondary-blue);
     display: flex;
     align-items: center;
-    justify-content: flex-end; /* Valor a la derecha */
+    justify-content: flex-end;
 }
 
 .bar-value {
@@ -243,7 +260,8 @@
     justify-content: center;
     gap: 5px;
     white-space: nowrap;
-    min-width: 100px;
+    min-width: 80px;
+    max-width: 120px;
 }
 
 /* ===== FOOTER PARA GRÁFICO (CON MARGEN NEGATIVO) ===== */
@@ -257,6 +275,8 @@
     font-weight: 400;
     margin: 0 -20px 0 -20px;
     border-radius: 0 0 10px 10px;
+    max-width: calc(100% + 40px);
+    box-sizing: border-box;
 }
 
 /* ===== NUEVOS ESTILOS PARA GRÁFICO DE SENIORITY CON EJE ===== */
@@ -267,6 +287,7 @@
     gap: 15px;
     margin-bottom: -10px;
     align-items: flex-start;
+    max-width: 100%;
 }
 
 /* Eje vertical (Y-axis) */
@@ -275,7 +296,7 @@
     flex-direction: column;
     justify-content: space-between;
     width: 40px;
-    height: 250px; /* Altura fija para 6 marcas */
+    height: 250px;
     text-align: right;
     font-family: 'JetBrains Mono', monospace;
     font-size: 0.8rem;
@@ -308,16 +329,17 @@
 .columns-container {
     flex: 1;
     min-height: 250px;
+    max-width: calc(100% - 55px);
 }
 
 /* ===== ESTILOS PARA GRÁFICOS DE SENIORITY (AJUSTES) ===== */
 
 /* Aumentar altura del contenedor de columnas */
 .column-chart-bar-container {
-    height: 250px !important; /* Aumentado de 120px para más espacio */
+    height: 250px !important;
     width: 100%;
     display: flex;
-    align-items: flex-end; /* Las columnas crecen desde abajo */
+    align-items: flex-end;
     justify-content: center;
     position: relative;
 }
@@ -325,7 +347,7 @@
 /* Ajustar posición del valor en las columnas */
 .column-chart-value {
     position: absolute;
-    top: -25px; /* Más arriba para no chocar con eje */
+    top: -25px;
     left: 50%;
     transform: translateX(-50%);
     font-family: 'JetBrains Mono', monospace;
@@ -338,26 +360,29 @@
     border-radius: 3px;
     box-shadow: 0 1px 3px rgba(0,0,0,0.1);
     z-index: 2;
+    max-width: 90%;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
 
 /* ===== ESTILOS PARA MATRIZ TRANSPUESTA (COMPACTA) ===== */
 
-/* Tabla transpuesta - COMPACTA */
+/* Tabla transpuesta - COMPACTA - MODIFICADO */
 .data-table.transposed-matrix {
-    min-width: 915px; /* ANCHO CALCULADO: 150px + (85px × 9) */
+    min-width: 0;
     width: 100%;
-    font-size: 0.88rem; /* MISMO QUE TABLA RESUMEN */
+    font-size: 0.88rem;
 }
 
 /* Quitar sombreado de filas alternas para matriz */
 .data-table.transposed-matrix tr.even,
 .data-table.transposed-matrix tr.odd {
-    background: var(--white) !important; /* MISMO COLOR PARA TODAS */
+    background: var(--white) !important;
 }
 
 /* Oscurecer bordes entre filas */
 .data-table.transposed-matrix td {
-    border-bottom: 1px solid #E0E0E0 !important; /* BORDE MÁS OSCURO */
+    border-bottom: 1px solid #E0E0E0 !important;
 }
 
 /* Encabezados de categoría */
@@ -367,11 +392,14 @@
     color: white;
     border-right: 2px solid rgba(255,255,255,0.3);
     font-weight: 700;
-    font-size: 0.9rem; /* REDUCIDO */
-    padding: 10px 4px; /* REDUCIDO */
-    min-width: 255px; /* 85px × 3 */
-    height: 40px; /* ALTURA FIJA */
+    font-size: 0.9rem;
+    padding: 10px 4px;
+    min-width: 0;
+    max-width: 255px;
+    height: 40px;
     vertical-align: middle;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
 
 /* Encabezados de nivel - TEXTO EN MINÚSCULAS PARA COHERENCIA */
@@ -382,13 +410,15 @@
     border-right: 1px solid #E5E7EB;
     border-bottom: 2px solid var(--primary-color);
     font-weight: 600;
-    font-size: 0.85rem; /* REDUCIDO */
-    padding: 8px 4px; /* REDUCIDO */
-    min-width: 85px;
+    font-size: 0.85rem;
+    padding: 8px 4px;
+    min-width: 0;
     max-width: 85px;
-    height: 36px; /* ALTURA FIJA */
+    height: 36px;
     vertical-align: middle;
-    text-transform: lowercase; /* AJUSTE SOLICITADO: minúsculas */
+    text-transform: lowercase;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
 
 /* Esquina sticky */
@@ -399,14 +429,16 @@
     background: var(--primary-color);
     color: white;
     font-weight: 700;
-    min-width: 150px;
+    min-width: 0;
     max-width: 150px;
     text-align: center;
     vertical-align: middle;
     font-size: 0.9rem;
     padding: 10px 8px;
-    height: 76px; /* 40px + 36px (altura de las dos filas de encabezado) */
+    height: 76px;
     border-right: 2px solid rgba(255,255,255,0.3);
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
 
 /* Celdas de distrito (primera columna) - COLOR AJUSTADO A --primary-color */
@@ -416,62 +448,52 @@
     z-index: 20;
     background: var(--background-color);
     font-weight: 600;
-    min-width: 150px;
+    min-width: 0;
     max-width: 150px;
     border-right: 2px solid var(--primary-color);
     font-size: 0.9rem;
-    padding: 8px 10px; /* MISMO QUE TABLA RESUMEN */
-    height: 40px; /* ALTURA FIJA */
+    padding: 8px 10px;
+    height: 40px;
     vertical-align: middle;
-    color: var(--primary-color); /* AJUSTE SOLICITADO: texto en azul primario */
+    color: var(--primary-color);
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: normal;
 }
 
 /* Celdas de matriz - COMPACTAS CON COLOR DE TEXTO AJUSTADO */
 .data-table.transposed-matrix td.matrix-cell {
     text-align: center;
-    min-width: 85px;
+    min-width: 0;
     max-width: 85px;
     font-family: 'JetBrains Mono', monospace;
-    font-weight: 500; /* AJUSTE SOLICITADO: peso 500 */
-    font-size: 0.88rem; /* MISMO QUE TABLA RESUMEN */
-    padding: 8px 4px; /* COMPACTO */
+    font-weight: 500;
+    font-size: 0.88rem;
+    padding: 8px 4px;
     transition: all 0.2s ease;
     cursor: default;
     border-right: 1px solid #F3F4F6;
-    height: 40px; /* ALTURA FIJA */
+    height: 40px;
     vertical-align: middle;
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;
-    color: var(--primary-700) !important; /* AJUSTE SOLICITADO: color primary-700 */
+    color: var(--primary-700) !important;
 }
 
 /* 
  * ⚠️ EXCEPCIÓN DOCUMENTADA: COLORES SEMÁNTICOS EN HEATMAP
- * --------------------------------------------------------------
- * JUSTIFICACIÓN: La matriz de calor (heatmap) en la página "Accesibilidad"
- * requiere colores de fondo semánticos (verde/amarillo/rojo) para representar
- * visualmente los rangos de viabilidad, siendo fiel al patrón de diseño
- * de mapas de calor.
- * 
- * ALCANCE DE LA EXCEPCIÓN:
- * - SÓLO estas 3 clases (.cell-viable, .cell-limitado, .cell-inviable)
- * - SÓLO en la matriz transpuesta (.transposed-matrix)
- * - SÓLO como color de fondo (el texto usa --primary-700)
- * - NO aplica a otros componentes o páginas
- * 
- * Esta excepción está documentada en docs/styles.md sección "Excepción documentada"
  */
 .data-table.transposed-matrix td.matrix-cell.cell-viable {
-    background-color: rgba(75, 192, 192, 0.12) !important; /* VERDE SUAVE */
+    background-color: rgba(75, 192, 192, 0.12) !important;
 }
 
 .data-table.transposed-matrix td.matrix-cell.cell-limitado {
-    background-color: rgba(255, 206, 86, 0.12) !important; /* AMARILLO SUAVE */
+    background-color: rgba(255, 206, 86, 0.12) !important;
 }
 
 .data-table.transposed-matrix td.matrix-cell.cell-inviable {
-    background-color: rgba(255, 99, 132, 0.12) !important; /* ROJO SUAVE */
+    background-color: rgba(255, 99, 132, 0.12) !important;
 }
 
 .data-table.transposed-matrix td.matrix-cell.cell-nodata {
@@ -481,7 +503,7 @@
 
 /* Efecto hover en celdas de matriz - MÁS SUTIL */
 .data-table.transposed-matrix td.matrix-cell:hover {
-    transform: scale(1.02); /* MÁS SUTIL */
+    transform: scale(1.02);
     box-shadow: 0 1px 4px rgba(0,0,0,0.08);
     z-index: 10;
     position: relative;
@@ -531,14 +553,16 @@
     font-size: 0.85rem;
     margin: 0 6px;
     font-weight: 500;
+    max-width: 100%;
+    box-sizing: border-box;
 }
-
 
 /* ===== ESTILOS PARA ESTADOS ===== */
 .data-message, .error-state {
     text-align: center;
     padding: 30px 16px;
     color: var(--neutral-gray);
+    max-width: 100%;
 }
 
 .message-icon, .error-icon {
@@ -554,6 +578,7 @@
     color: var(--text-color);
     margin-bottom: 6px;
     font-size: 1rem;
+    max-width: 100%;
 }
 
 .data-message p, .error-state p {
@@ -578,6 +603,7 @@
     transition: all 0.2s ease;
     font-family: 'Inter', sans-serif;
     font-size: 0.85rem;
+    max-width: 100%;
 }
 
 .retry-btn:hover {
@@ -592,10 +618,13 @@
     margin-top: 3rem;
     padding-top: 2rem;
     border-top: 2px solid #E5E7EB;
+    max-width: 100%;
+    overflow: visible;
 }
 
 .subsection-header {
     margin-bottom: 2rem;
+    max-width: 100%;
 }
 
 .subsection-header h3 {
@@ -605,6 +634,7 @@
     display: flex;
     align-items: center;
     gap: 0.5rem;
+    max-width: 100%;
 }
 
 .subsection-header .page-description {
@@ -612,6 +642,7 @@
     font-size: 0.95rem;
     line-height: 1.5;
     margin-bottom: 0;
+    max-width: 100%;
 }
 
 /* Ajustes para el contenedor de visualización en subsecciones */
@@ -619,12 +650,15 @@
     width: 100%;
     margin: 0;
     padding: 0;
+    max-width: 100%;
+    overflow-x: auto;
 }
 
 #seniority-comparison-chart {
     width: 100%;
     padding: 20px 20px 0 20px;
     margin: 16px 0;
+    max-width: 100%;
 }
 
 /* Placeholder para gráficos futuros en subsecciones */
@@ -632,6 +666,7 @@
     text-align: center;
     padding: 30px 16px;
     color: var(--neutral-gray);
+    max-width: 100%;
 }
 
 .chart-placeholder .message-icon {
@@ -643,6 +678,7 @@
     color: var(--text-color);
     margin-bottom: 1rem;
     font-size: 1.2rem;
+    max-width: 100%;
 }
 
 .chart-placeholder .preview-items {
@@ -662,6 +698,8 @@
     background-color: var(--background-color);
     border-radius: 8px;
     border-left: 4px solid var(--primary-color);
+    max-width: 100%;
+    box-sizing: border-box;
 }
 
 .chart-placeholder .preview-category {
@@ -675,7 +713,6 @@
     color: var(--primary-color);
 }
 
-
 /* ===== ESTILOS PARA GRÁFICOS DE SENIORITY ===== */
 
 /* Gráfico de columnas verticales */
@@ -685,12 +722,13 @@
     align-items: center;
     gap: 8px;
     margin-bottom: 20px;
-    width: calc(16.666% - 10px); /* 6 columnas */
-    min-width: 100px;
+    width: calc(16.666% - 10px);
+    min-width: 80px;
+    max-width: 120px;
 }
 
 .column-chart-bar-container {
-    height: 250px; /* AUMENTADO para más espacio */
+    height: 250px;
     width: 100%;
     display: flex;
     align-items: flex-end;
@@ -710,7 +748,7 @@
 
 .column-chart-value {
     position: absolute;
-    top: -28px; /* Ajustado para no chocar con eje */
+    top: -28px;
     left: 50%;
     transform: translateX(-50%);
     font-family: 'JetBrains Mono', monospace;
@@ -723,6 +761,9 @@
     border-radius: 3px;
     box-shadow: 0 1px 3px rgba(0,0,0,0.1);
     z-index: 2;
+    max-width: 90%;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
 
 .column-chart-label {
@@ -735,6 +776,8 @@
     display: flex;
     align-items: center;
     justify-content: center;
+    max-width: 100%;
+    overflow-wrap: break-word;
 }
 
 .column-chart-viability {
@@ -743,6 +786,7 @@
     display: flex;
     align-items: center;
     gap: 4px;
+    max-width: 100%;
 }
 
 /* Contenedor para gráfico de columnas (6 en fila) */
@@ -751,6 +795,7 @@
     justify-content: space-between;
     flex-wrap: wrap;
     gap: 10px;
+    max-width: 100%;
 }
 
 /* Leyenda de colores mejorada */
@@ -763,6 +808,8 @@
     background: var(--background-color);
     border-radius: 4px;
     font-size: 0.85rem;
+    max-width: 100%;
+    box-sizing: border-box;
 }
 
 .color-box {
@@ -772,109 +819,82 @@
     display: inline-block;
 }
 
-/* ===== RESPONSIVE GENERAL ===== */
-
-@media (max-width: 1024px) {
-    /* Ajustes para tablet */
-    .bar-item {
-        grid-template-columns: 2fr 3fr 1fr;
-        gap: 10px;
-    }
-    
-    .bar-label {
-        min-width: 160px;
-        max-width: 250px;
-    }
-    
-    .bar-label strong {
-        font-size: 0.85rem;
-    }
-    
-    .bar-label small {
-        font-size: 0.75rem;
-    }
-    
-    .bar-wrapper {
-        min-width: 130px;
-    }
-    
-    .bar-viability {
-        min-width: 90px;
-        font-size: 0.78rem;
-    }
-    
-    /* Matriz transpuesta en tablet */
-    .data-table.transposed-matrix {
-        min-width: 800px;
-    }
-    
-    .data-table.transposed-matrix th.sticky-corner,
-    .data-table.transposed-matrix td.district-cell.sticky-district {
-        min-width: 140px;
-        max-width: 140px;
-        font-size: 0.88rem;
-    }
-    
-    .data-table.transposed-matrix td.matrix-cell {
-        min-width: 75px;
-        max-width: 75px;
-        font-size: 0.85rem;
-        padding: 8px 3px;
-    }
-    
-    .data-table.transposed-matrix th.level-header {
-        min-width: 75px;
-        max-width: 75px;
-        font-size: 0.82rem;
-    }
-    
-    .data-table.transposed-matrix th.category-header {
-        min-width: 225px; /* 75px × 3 */
-        font-size: 0.88rem;
-    }
-    
-    /* Ajustes para gráfico de Seniority en tablet */
-    .chart-with-axis {
-        gap: 12px;
-    }
-    
-    .y-axis {
-        width: 35px;
-        height: 220px;
-        font-size: 0.75rem;
-    }
-    
-    .column-chart-bar-container {
-        height: 220px !important;
-    }
-    
-    .column-chart-item {
-        width: calc(33.333% - 10px); /* 3 columnas por fila en tablet */
-        margin-bottom: 25px;
-    }
-    
-    .bars-container.column-layout {
-        justify-content: space-around;
-    }
-}
-
+/* ===== OPTIMIZACIONES PARA MÓVIL (≤768px) ===== */
 @media (max-width: 768px) {
+    /* 1. OCULTAR COLUMNA "TIPO" EN MÓVIL */
+    .data-table th:nth-child(3),
+    .data-table td:nth-child(3) {
+        display: none;
+    }
+    
+    /* 2. REDUCIR BARRIO (Columna 1) */
+    .data-table th:nth-child(1),
+    .data-table td:nth-child(1) {
+        min-width: 80px !important;
+        max-width: 100px !important;
+        padding: 8px 6px !important;
+    }
+    
+    /* 3. REDUCIR % ESFUERZO (Columna 5) */
+    .data-table th:nth-child(5),
+    .data-table td:nth-child(5) {
+        min-width: 60px !important;
+        max-width: 70px !important;
+        padding: 8px 4px !important;
+        font-size: 0.7rem !important;
+    }
+    
+    /* 4. REDUCIR VIABILIDAD (Columna 6) */
+    .data-table th:nth-child(6),
+    .data-table td:nth-child(6) {
+        min-width: 50px !important;
+        max-width: 60px !important;
+        padding: 8px 3px !important;
+    }
+    
+    .data-table td.viability-icon {
+        font-size: 0.7rem !important;
+    }
+    
+    /* 5. REDUCIR TABLA COMPLETA */
+    .data-table {
+        min-width: 400px !important;
+        font-size: 0.7rem !important;
+    }
+    
+    /* 6. ENCABEZADOS MÁS COMPACTOS */
+    .data-table th {
+        font-size: 0.7rem !important;
+        padding: 8px 5px !important;
+        white-space: normal !important;
+        line-height: 1.1 !important;
+    }
+    
+    /* 7. MATRIZ DE CALOR MÁS COMPACTA */
+    .data-table.transposed-matrix {
+        min-width: 400px !important;
+        font-size: 0.75rem !important;
+    }
+    
+    /* 8. CONTENEDORES DE TABLA */
     .table-container {
         margin: 12px 0;
         border-radius: 8px;
         overflow-x: auto;
         -webkit-overflow-scrolling: touch;
+        max-width: 100vw;
     }
     
     .data-table {
-        font-size: 0.82rem;
-        min-width: 100%;
+        font-size: 0.7rem;
+        min-width: 400px;
+        max-width: none;
     }
     
     .data-table th,
     .data-table td {
         padding: 8px 10px;
-        font-size: 0.82rem;
+        font-size: 0.7rem !important;
     }
     
     /* Mantener alineación en móvil */
@@ -889,26 +909,19 @@
         text-align: center;
     }
     
-    /* VIABILIDAD: SOLO ICONO EN MÓVIL */
-    .viability-icon {
-        font-size: 0.78rem;
-        gap: 4px;
-    }
-    
-    .viability-icon::after {
-        content: none; /* Oculta el texto "Viable/Limitado/Inviable" */
-    }
-    
     /* FOOTERS UNIFICADOS EN MÓVIL */
     .table-footer, .table-container .table-footer {
         padding: 8px 12px;
         font-size: 0.82rem;
+        max-width: 100%;
     }
     
     .html-chart .chart-footer {
         padding: 8px 12px;
         font-size: 0.82rem;
         margin: 16px -16px 0 -16px;
+        max-width: calc(100% + 32px);
+        box-sizing: border-box;
     }
     
     .footer-info {
@@ -916,17 +929,20 @@
         flex-direction: column;
         align-items: flex-start;
         gap: 8px;
+        max-width: 100%;
     }
     
     .kpi-cards-container {
         grid-template-columns: 1fr;
         gap: 10px;
+        max-width: 100%;
     }
     
     .kpi-card {
         flex-direction: row;
         align-items: center;
         gap: 10px;
+        max-width: 100%;
     }
     
     .kpi-card-icon {
@@ -945,6 +961,8 @@
     
     .html-chart {
         padding: 16px 16px 0 16px;
+        max-width: 100vw;
+        overflow-x: hidden;
     }
     
     /* En móviles, cambiar a disposición vertical - UNA COLUMNA */
@@ -954,6 +972,7 @@
         margin-bottom: 20px;
         padding-bottom: 12px;
         border-bottom: 1px solid #F3F4F6;
+        max-width: 100%;
     }
     
     .bar-label {
@@ -975,12 +994,15 @@
         font-size: 0.78rem;
         margin-top: 4px;
         justify-content: flex-start;
+        max-width: 100%;
     }
     
     /* Ajustes para subsecciones en móvil */
     .dashboard-subsection {
         margin-top: 2rem;
         padding-top: 1.5rem;
+        max-width: 100vw;
+        overflow-x: hidden;
     }
     
     .subsection-header h3 {
@@ -995,6 +1017,7 @@
         width: 100%;
         justify-content: center;
         margin: 2px 0;
+        box-sizing: border-box;
     }
     
     .table-container .table-footer .footer-info em {
@@ -1006,33 +1029,34 @@
     
     /* Matriz transpuesta en móvil */
     .data-table.transposed-matrix {
-        min-width: 700px;
+        min-width: 400px;
     }
     
     .data-table.transposed-matrix th.sticky-corner,
     .data-table.transposed-matrix td.district-cell.sticky-district {
-        min-width: 130px;
+        min-width: 0;
         max-width: 130px;
         font-size: 0.85rem;
         padding: 8px 6px;
     }
     
     .data-table.transposed-matrix td.matrix-cell {
-        min-width: 70px;
+        min-width: 0;
         max-width: 70px;
         font-size: 0.82rem;
         padding: 8px 3px;
     }
     
     .data-table.transposed-matrix th.level-header {
-        min-width: 70px;
+        min-width: 0;
         max-width: 70px;
         font-size: 0.8rem;
         padding: 8px 3px;
     }
     
     .data-table.transposed-matrix th.category-header {
-        min-width: 210px; /* 70px × 3 */
+        min-width: 0;
+        max-width: 210px;
         font-size: 0.85rem;
         padding: 10px 3px;
     }
@@ -1043,60 +1067,9 @@
         max-width: 250px;
         padding: 8px 10px;
     }
-    
-    /* Ajustes para gráfico de Seniority en móvil */
-    .chart-with-axis {
-        flex-direction: column;
-        gap: 10px;
-    }
-    
-    .y-axis {
-        width: 100%;
-        height: 30px;
-        flex-direction: row;
-        justify-content: space-between;
-        border-right: none;
-        border-bottom: 1px solid var(--neutral-gray);
-        padding-right: 0;
-        padding-bottom: 8px;
-        text-align: center;
-    }
-    
-    .y-tick {
-        padding-right: 0;
-        padding-bottom: 10px;
-    }
-    
-    .y-tick::after {
-        right: 50%;
-        top: auto;
-        bottom: -8px;
-        transform: translateX(50%);
-        width: 1px;
-        height: 6px;
-    }
-    
-    .columns-container {
-        min-height: auto;
-        width: 100%;
-    }
-    
-    .column-chart-item {
-        width: calc(50% - 10px); /* 2 columnas por fila en móvil */
-        margin-bottom: 30px;
-    }
-    
-    .column-chart-bar-container {
-        height: 180px !important;
-    }
-    
-    .column-chart-value {
-        top: -22px;
-        font-size: 0.75rem;
-        padding: 1px 4px;
-    }
 }
 
+/* ===== RESPONSIVE PARA PANTALLAS MÁS PEQUEÑAS ===== */
 @media (max-width: 480px) {
     .viability-icon {
         font-size: 0.75rem;
@@ -1107,6 +1080,7 @@
         flex-direction: row;
         align-items: center;
         gap: 10px;
+        max-width: 100%;
     }
     
     .kpi-card-icon {
@@ -1148,6 +1122,7 @@
     .dashboard-subsection {
         margin-top: 1.5rem;
         padding-top: 1.25rem;
+        max-width: 100vw;
     }
     
     .chart-placeholder .preview-items {
@@ -1156,49 +1131,36 @@
     
     /* Matriz transpuesta en móvil pequeño */
     .data-table.transposed-matrix {
-        min-width: 600px;
+        min-width: 400px;
     }
     
     .data-table.transposed-matrix th.sticky-corner,
     .data-table.transposed-matrix td.district-cell.sticky-district {
-        min-width: 120px;
+        min-width: 0;
         max-width: 120px;
         font-size: 0.82rem;
         padding: 6px 4px;
     }
     
     .data-table.transposed-matrix td.matrix-cell {
-        min-width: 60px;
+        min-width: 0;
         max-width: 60px;
         font-size: 0.78rem;
         padding: 6px 2px;
     }
     
     .data-table.transposed-matrix th.level-header {
-        min-width: 60px;
+        min-width: 0;
         max-width: 60px;
         font-size: 0.75rem;
         padding: 6px 2px;
     }
     
     .data-table.transposed-matrix th.category-header {
-        min-width: 180px; /* 60px × 3 */
+        min-width: 0;
+        max-width: 180px;
         font-size: 0.8rem;
         padding: 8px 2px;
-    }
-    
-    /* Ajustes para gráfico de Seniority en móvil pequeño */
-    .column-chart-item {
-        width: calc(50% - 5px);
-    }
-    
-    .column-chart-bar {
-        width: 30px;
-    }
-    
-    .column-chart-label {
-        font-size: 0.8rem;
-        height: 3em;
     }
 }
 
@@ -1206,14 +1168,16 @@
 @media (max-width: 768px) and (orientation: landscape) {
     .kpi-cards-container {
         grid-template-columns: repeat(2, 1fr);
+        max-width: 100%;
     }
     
     .bar-item {
-        grid-template-columns: 2fr 3fr 1fr !important; /* Volver a grid en landscape */
+        grid-template-columns: 2fr 3fr 1fr !important;
         align-items: center;
         border-bottom: none;
         margin-bottom: 12px;
         padding-bottom: 0;
+        max-width: 100%;
     }
     
     .bar-label {
@@ -1234,26 +1198,6 @@
     }
     
     .data-table.transposed-matrix {
-        min-width: 800px;
-    }
-    
-    /* Ajustes para gráfico de Seniority en landscape */
-    .chart-with-axis {
-        flex-direction: row;
-    }
-    
-    .y-axis {
-        width: 35px;
-        height: 200px;
-        flex-direction: column;
-        border-right: 1px solid var(--neutral-gray);
-        border-bottom: none;
-        padding-right: 8px;
-        padding-bottom: 0;
-        text-align: right;
-    }
-    
-    .column-chart-item {
-        width: calc(33.333% - 10px);
+        min-width: 400px;
     }
 }
