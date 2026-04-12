@@ -115,7 +115,7 @@ Este proyecto está bajo la Licencia MIT. Ver el archivo `LICENSE` para más det
 - 📧 Email: isabel.abad.ca@gmail.com
 - 💼 LinkedIn: [linkedin.com/in/isabel-abad](https://linkedin.com/in/isabel-abad)
 - 🐙 GitHub: [@Sisuca](https://github.com/Sisuca)
-- 🔗 **Portafolio:** *Próximamente*
+- 🔗 Portafolio: [www.isabelabad.es](https://www.isabelabad.es)
 
 ---
 
