@@ -28,3 +28,6 @@ build/
 # Temp
 *.tmp
 *.temp
+
+# System (Windows)
+desktop.ini
