@@ -31,3 +31,8 @@ build/
 
 # System (Windows)
 desktop.ini
+
+# Prevenir subida accidental de carpetas del sistema
+Desktop/
+Documents/
+Downloads/
